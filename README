@@ -1,0 +1,27 @@
+==Why?==
+After my upgrade to Kubuntu Lucid Lynx, I (like many others) started experiencing dropouts on my wireless connection.
+None of the suggested solutions( mainly on the Ubuntu forums) worked for me.
+This is just a quick hack until the cause for this gets fixed by the Ubuntu devs.
+
+==Requirements==
+needs cnetworkmanager (http://vidner.net/martin/software/cnetworkmanager/) to be downloaded, the source archive contains the binary.
+bash (haven't tested in other shells but, it might work)
+
+==Usage==
+Example:
+
+1.
+./fix-wireless.sh
+./fix-wireless.sh --help
+./fix-wireless.sh -h
+
+to get the usage instructions
+
+2.
+./fix-wireless.sh google.com myssid mywpapasswordformyssid /home/cmetworkmanager
+
+where google.com is the domain that I want to ping to see if I am coonected to internet or not
+mysssid is my wireless network name
+mywpapasswordformyssid is the WPA[2] password for the above network
+/home/cmetworkmanager is the directory containing the cnetworkmanager executable
+
