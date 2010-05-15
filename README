@@ -8,7 +8,7 @@ needs cnetworkmanager (http://vidner.net/martin/software/cnetworkmanager/) to be
 bash (haven't tested in other shells but, it might work)
 
 ==Usage==
-Example:
+Examples:
 
 1.
 ./fix-wireless.sh
