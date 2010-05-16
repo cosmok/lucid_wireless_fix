@@ -47,7 +47,9 @@ while true; do
         done
         echo "`date` Conn dropped, trying to reconnect."
         #just wpa-pass for now, if you need to use wep, change it here
-        "$cnetpath/cnetworkmanager" -C "$ssid" --wpa-pass="$pass" 
+        #run this process in the background and wait for a state change
+        "$cnetpath/cnetworkmanager" -C "$ssid" --wpa-pass="$pass" & 
+        wait $!
     fi 
     echo "sleeping for $sleepInterval"
     sleep $sleepInterval
