@@ -1,22 +1,17 @@
 #!/bin/bash
 
 function printUsage {
-    echo "Usage: fix-wireless.sh host-to-ping ssid password cnetworkmanager-path"
+    echo "Usage: `basename $0` host-to-ping ssid password cnetworkmanager-path"
 }
 
 #if correct number of parameters not passed
-if [ $1 = '' -o $2 = '' -o $3 = '' -o $4 = '' ]; then
-    printUsage
-    echo $1 
-    echo $2 
-    echo $3 
-    echo $4
-    exit 1
-fi
 
-if [ $1 = '--help'  -o $1 = '-h' ]; then
+if [ $# -lt 2 ]; then
     printUsage
     exit 0
+elif [ $# != 4 ]; then
+    printUsage
+    exit 1
 fi
 
 # add ip / hostname that you want to ping for connectivity check( for e.g., google.com)
