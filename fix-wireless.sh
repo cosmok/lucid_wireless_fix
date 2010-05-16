@@ -39,16 +39,16 @@ while true; do
     ping -i 0.3 -c $count $host 
     #if ping exits with a non-zero status, then no connectivity
     if [[ $? != 0 ]]; then
-    # if the executable is already running then, kill it
+        # if the executable is already running then, kill it
         pids=`pgrep "cnetworkmanager"`
         for pid in $pids; do
+            echo "Killing $pid"
             kill -9 $pid
         done
-        echo `date` Conn dropped, trying to reconnect.
+        echo "`date` Conn dropped, trying to reconnect."
         #just wpa-pass for now, if you need to use wep, change it here
         "$cnetpath/cnetworkmanager" -C "$ssid" --wpa-pass="$pass" 
-    else 
-       #all good
-       sleep $sleepInterval
-    fi
+    fi 
+    echo "sleeping for $sleepInterval"
+    sleep $sleepInterval
 done
