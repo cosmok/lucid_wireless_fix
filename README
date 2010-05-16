@@ -25,3 +25,10 @@ mysssid is my wireless network name
 mywpapasswordformyssid is the WPA[2] password for the above network
 /home/cmetworkmanager is the directory containing the cnetworkmanager executable
 
+==Troubleshooting===
+
+1.I get the following error: Another applet is running: Bus name already exists: org.freedesktop.NetworkManagerUserSettings (pid 1681)
+ Fix: kill the pid and try again
+
+2.I use WEP
+look at the usage for cnetworkmanager (cnetworkmanager -h)  and modify the line containing --wpa-pass in the fix-wireless.sh script
