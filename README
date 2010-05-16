@@ -28,7 +28,11 @@ mywpapasswordformyssid is the WPA[2] password for the above network
 ==Troubleshooting===
 
 1.I get the following error: Another applet is running: Bus name already exists: org.freedesktop.NetworkManagerUserSettings (pid 1681)
- Fix: kill the pid and try again
+Fix: kill the pid and try again
 
 2.I use WEP
-look at the usage for cnetworkmanager (cnetworkmanager -h)  and modify the line containing --wpa-pass in the fix-wireless.sh script
+Look at the usage for cnetworkmanager (cnetworkmanager -h)  and modify the line containing --wpa-pass in the fix-wireless.sh script
+
+3.Even after running the script, I seem to have periods where there is no connectivity
+Maybe your droputs are more frequent. Lower the sleepInterval variable in the script.
+For e.g., set it to "30s" to check for connectivity every 30 seconds
