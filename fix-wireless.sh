@@ -33,11 +33,11 @@ if [ ! -f "$cnetpath/cnetworkmanager" ]; then
 fi
 
 #check for connectivity after this interval
-sleepInterval="1m"
+sleepInterval="2m"
 while true; do 
 #ping to check connectivity
     ping -i 0.3 -c $count $host 
-    #if ping exits with a non-zero status, then no connectivity
+    #if phing exits with a non-zero status, then no connectivity
     if [[ $? != 0 ]]; then
         # if the executable is already running then, kill it
         pids=`pgrep "cnetworkmanager"`
@@ -46,6 +46,10 @@ while true; do
             kill -9 $pid
         done
         echo "`date` Conn dropped, trying to reconnect."
+        #cnetworkmanager sometimes fails to connect if wireless is not disconnected and then connected 
+        #should be really handling errors here
+	"$cnetpath/cnetworkmanager" --wifi=0 
+	"$cnetpath/cnetworkmanager" --wifi=1 
         #just wpa-pass for now, if you need to use wep, change it here
         #run this process in the background and wait for a state change
         "$cnetpath/cnetworkmanager" -C "$ssid" --wpa-pass="$pass" & 
