@@ -49,7 +49,6 @@ while true; do
         #just wpa-pass for now, if you need to use wep, change it here
         #run this process in the background and wait for a state change
         "$cnetpath/cnetworkmanager" -C "$ssid" --wpa-pass="$pass" & 
-        wait $!
     fi 
     echo "sleeping for $sleepInterval"
     sleep $sleepInterval
