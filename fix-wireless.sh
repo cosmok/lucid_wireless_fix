@@ -26,6 +26,11 @@ pass=$3
 
 #directory containing the cnetworkmanager executable
 cnetpath=$4
+# does the executable exist/
+if [ ! -f "$cnetpath/cnetworkmanager" ]; then
+    echo "cnetworkmanager executable does not exist in the dir $cnetpath"
+    exit 1
+fi
 
 #check for connectivity after this interval
 sleepInterval="30m"
@@ -34,12 +39,7 @@ while true; do
     ping -i 0.3 -c $count $host 
     #if ping exits with a non-zero status, then no connectivity
     if [[ $? != 0 ]]; then
-        # does the executable exist/
-        if [ ! -f "$cnetpath/cnetworkmanager" ]; then
-            echo "cnetworkmanager executable does not exist in the dir $cnetpath"
-            exit 1
-        fi
-        # if the executable is already running then, kill it
+    # if the executable is already running then, kill it
         pids=`pgrep "cnetworkmanager"`
         for pid in $pids; do
             kill -9 $pid
