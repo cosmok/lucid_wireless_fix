@@ -36,3 +36,8 @@ Look at the usage for cnetworkmanager (cnetworkmanager -h)  and modify the line 
 3.Even after running the script, I seem to have periods where there is no connectivity
 Maybe your droputs are more frequent. Lower the sleepInterval variable in the script.
 For e.g., set it to "30s" to check for connectivity every 30 seconds
+
+4.My Wireless LED/Indicator is not on/Networking is disabled
+Try:
+cnetworkmanager --online=true
+cnetworkmanager --wifi=true

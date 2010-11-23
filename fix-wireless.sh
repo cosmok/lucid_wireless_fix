@@ -33,7 +33,7 @@ if [ ! -f "$cnetpath/cnetworkmanager" ]; then
 fi
 
 #check for connectivity after this interval
-sleepInterval="2m"
+sleepInterval="1m"
 while true; do 
 #ping to check connectivity
     ping -i 0.3 -c $count $host 
